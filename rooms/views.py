@@ -9,4 +9,4 @@ def rooms_list(request):
     context = {
         "rooms": rooms
     }
-    return render(request=request, template_name="room_list.html", context=context)
+    return render(request=request, template_name="rooms/room_list.html", context=context)
