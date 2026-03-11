@@ -1,27 +1,29 @@
-<nav>
-    <a href="#">Booking</a>
-    <ul>
-        <li>
-            <a href="#">Пошук номера</a>
-        </li>
-        <li>
-            <a href="{% url 'rooms' %}">Наші кімнати</a>
-        </li>
-        <li>
-            <a href="#">Про нас</a>
-        </li>
-        {% if user.is_authenticated %}    
+<div class="container"> 
+    <nav class="navbar">
+        <a class="logo" href="{% url 'main_page' %}">Booking</a>
+        <ul class="nav-menu">
             <li>
-                <a href="#">Мої бронювання</a>
+                <a class="add-to-cart" href="{% url 'main_page' %}">Пошук номера</a>
             </li>
             <li>
-                <a href="#">Вийти</a>
+                <a class="add-to-cart" href="{% url 'rooms' %}">Наші кімнати</a>
             </li>
-        {% else %}
             <li>
-                <a href="#">Увійти</a>
+                <a class="add-to-cart" href="#">Про нас</a>
             </li>
-        {% endif %}
+            {% if user.is_authenticated %}    
+                <li>
+                    <a class="add-to-cart" href="#">Мої бронювання</a>
+                </li>
+                <li>
+                    <a class="add-to-cart" href="{% url 'logout' %}">Вийти</a>
+                </li>
+            {% else %}
+                <li>
+                    <a class="add-to-cart" href="{% url 'login' %}">Увійти</a>
+                </li>
+            {% endif %}
 
-    </ul>
-</nav>
+        </ul>
+    </nav>
+</div>
