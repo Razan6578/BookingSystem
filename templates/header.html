@@ -3,24 +3,24 @@
         <a class="logo" href="{% url 'main_page' %}">Booking</a>
         <ul class="nav-menu">
             <li>
-                <a class="add-to-cart" href="{% url 'main_page' %}">Пошук номера</a>
+                <a class="button-a" href="{% url 'main_page' %}">Пошук номера</a>
             </li>
             <li>
-                <a class="add-to-cart" href="{% url 'rooms' %}">Наші кімнати</a>
+                <a class="button-a" href="{% url 'rooms' %}">Наші кімнати</a>
             </li>
             <li>
-                <a class="add-to-cart" href="#">Про нас</a>
+                <a class="button-a" href="{% url 'about' %}">Про нас</a>
             </li>
             {% if user.is_authenticated %}    
                 <li>
-                    <a class="add-to-cart" href="#">Мої бронювання</a>
+                    <a class="button-a" href="{% url 'my_bookings' %}">Мої бронювання</a>
                 </li>
                 <li>
-                    <a class="add-to-cart" href="{% url 'logout' %}">Вийти</a>
+                    <a class="button-a" href="{% url 'logout' %}">Вийти</a>
                 </li>
             {% else %}
                 <li>
-                    <a class="add-to-cart" href="{% url 'login' %}">Увійти</a>
+                    <a class="button-a" href="{% url 'login' %}">Увійти</a>
                 </li>
             {% endif %}
 

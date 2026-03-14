@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Мої бронювання</h1>
+
+<div class="cards">
+    {% for booking in bookings %}
+        <div class="card">
+            <div class="book-card">
+                <img class="book-img" src="{{ booking.room.photo.url }}" alt="room">
+            </div>
+
+            <div class="card-content">
+                <h3>Кімната №{{ booking.room.number }} {{ booking.room.category }}</h3>
+                <p>Місць: {{ booking.room.capacity }}</p>
+                <p>Ціна: {{ booking.room.price }} грн</p>
+
+                <p>Заїзд: {{ booking.start_time }}</p>
+                <p>Виїзд: {{ booking.end_time }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p>У вас поки немає бронювань</p>
+    {% endfor %}
+</div>
+{% endblock %}

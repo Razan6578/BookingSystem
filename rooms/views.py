@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Room, Booking
+from django.contrib.auth.decorators import login_required
 
 # Функція представлення списку всіх кімнат
 def rooms_list(request):
@@ -53,6 +54,9 @@ def main_page(request):
     return render(request=request, template_name="rooms/main_page.html", context=context)
 
 
+def about(request):
+    return render(request=request, template_name="rooms/about.html") 
+
 # Функція представлення бронювання кімнати
 def book_room(request):
     if request.method == "GET":
@@ -96,6 +100,14 @@ def book_room(request):
         )
 
         return render(request=request, template_name="rooms/success.html", context={"booking": booking})
-    
 
+@login_required
+def my_bookings(request):
+    bookings = Booking.objects.filter(user=request.user)
+
+    context = {
+        "bookings": bookings
+    }
+
+    return render(request, "rooms/my_bookings.html", context)
                    

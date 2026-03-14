@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Вхід в акаунт</h1>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Увійти</button>
-</form>
-<p>Якщо у вас ще немає акаунту, будь ласка, <a href="{% url 'register' %}">зареєструйтесь</a></p>
+<div class="center">
+    <h1 class="m">Вхід в акаунт</h1>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="txt_field">
+            <label for="id_username">Логін</label>
+            {{ form.username }}
+        </div>
+        <div class="txt_field">
+            <label for="id_password">Пароль</label>
+            {{ form.password }}
+        </div>
+        <button class="button-s" type="submit">Увійти</button>
+    </form>
+    <p class="m">Якщо у вас ще немає акаунту, будь ласка, <a href="{% url 'register' %}">зареєструйтесь</a></p>
+</div>
 {% endblock %}

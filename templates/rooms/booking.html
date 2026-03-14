@@ -1,23 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Бронювання</h1>
-    <img src="{{ room.photo.url }}" style="width: 300px;">
-    <h3>Кімната №{{ room.number }} ({{ room.category }})</h3>
-    <p>Місць: {{ room.capacity }}</p>
-    <p>{{ room.description }}</p>
-    <p>Ціна: {{ room.price }} грн.</p>
+    <div class="booking-cont">
+        <img src="{{ room.photo.url }}">
+        <div class="booking-info">
+            <h3 class="inf-m">Кімната №{{ room.number }} ({{ room.category }})</h3>
+            <p class="inf-p">Місць: {{ room.capacity }} 
+                <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </p>
+            <p class="inf-p">{{ room.description }}</p>
+            <p class="inf-p">Ціна: <b>{{ room.price }}</b> грн.</p>
+        </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="room_id" value="{{ room.id }}">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="hidden" name="room_id" value="{{ room.id }}">
 
-        <label for="start_date">Дата заїзду:</label>
-        <input type="date" name="start_date" id="start_date" value="{{ start_date }}" min="{% now 'Y-m-d' %}" required>
+                <label for="start_date">Дата заїзду:</label>
+                <input type="date" name="start_date" id="start_date" value="{{ start_date }}" min="{% now 'Y-m-d' %}" required>
 
-        <label for="end_date">Дата виїзду:</label>
-        <input type="date" name="end_date" id="end_date" value="{{ end_date }}" min="{% now 'Y-m-d' %}" required>
-        
-        <button type="submit">Забронювати</button>
-    </form>
+                <label for="end_date">Дата виїзду:</label>
+                <input type="date" name="end_date" id="end_date" value="{{ end_date }}" min="{% now 'Y-m-d' %}" required>
+            </div>
+
+            <button class="button-s" type="submit">Забронювати</button>
+        </form>
+    </div>
 
 {% endblock %}
